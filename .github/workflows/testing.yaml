@@ -1,0 +1,18 @@
+on:
+  push:
+    branches:
+      - development*
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: This is the hello world job
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Hello World
+        uses: ./
+        with:
+          who-to-greet: "bsnacks"
+      - name: Get output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
